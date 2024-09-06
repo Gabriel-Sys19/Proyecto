@@ -150,7 +150,7 @@
                     <!-- Los items del carrito se insertarán aquí dinámicamente -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary">Proceder al pago</button>
                 </div>
             </div>
