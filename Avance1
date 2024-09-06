@@ -44,7 +44,7 @@
                     <p class="lead">Descubre la última moda en nuestra tienda online. Ofrecemos una amplia gama de ropa de alta calidad para todos los estilos y ocasiones.</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="img/no hay plan b.jpg" alt="Fachada de la tienda" class="img-fluid rounded" width="200" height="200">
+                    <img src="/Avance de proyecto/no hay plan b.jpg" alt="Fachada de la tienda" class="img-fluid rounded" width="200" height="200">
                 </div>
             </div>
         </section>
@@ -55,7 +55,7 @@
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="/Avance de proyecto/img/polo.png" class="card-img-top" alt="Camisa sport">
+                        <img src="/Avance de proyecto/polo.png" class="card-img-top" alt="Camisa sport">
                         <div class="card-body">
                             <h5 class="card-title">polo sport</h5>
                             <p class="card-text">S/29.99</p>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="/Avance de proyecto/img/pantalon.png" class="card-img-top" alt="Pantalón">
+                        <img src="/Avance de proyecto/pantalon.png" class="card-img-top" alt="Pantalón">
                         <div class="card-body">
                             <h5 class="card-title">Pantalón</h5>
                             <p class="card-text">S/49.99</p>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="/Avance de proyecto/img/vastido.png" class="card-img-top" alt="Vestido">
+                        <img src="/Avance de proyecto/vastido.png" class="card-img-top" alt="Vestido">
                         <div class="card-body">
                             <h5 class="card-title">Vestido</h5>
                             <p class="card-text">S/79.99</p>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="/Avance de proyecto/img/casacadecuero.png" class="card-img-top" alt="Casaca de Cuero">
+                        <img src="/Avance de proyecto/casacadecuero.png" class="card-img-top" alt="Casaca de Cuero">
                         <div class="card-body">
                             <h5 class="card-title">Casaca de Cuero</h5>
                             <p class="card-text">S/99.99</p>
@@ -165,7 +165,13 @@
             cart.push({name: productName, price: price});
             updateCart();
             updateCartCount();
-            alert(`${productName} añadido al carrito!`);
+            alert(${productName} añadido al carrito!);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+            updateCartCount();
         }
 
         function updateCartCount() {
@@ -175,8 +181,13 @@
         function updateCart() {
             let cartItems = document.getElementById('cartItems');
             cartItems.innerHTML = '';
-            cart.forEach(item => {
-                cartItems.innerHTML += `<p>${item.name} - S/${item.price.toFixed(2)}</p>`;
+            cart.forEach((item, index) => {
+                cartItems.innerHTML += `
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span>${item.name} - S/${item.price.toFixed(2)}</span>
+                        <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Eliminar</button>
+                    </div>
+                `;
             });
         }
 
